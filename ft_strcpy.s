@@ -1,7 +1,7 @@
 global ft_strcpy
 
 ft_strcpy:
-    xor rcx, rcx
+    mov rcx, 0
 
 loop:
     cmp byte [rsi + rcx], 0

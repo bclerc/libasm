@@ -1,7 +1,9 @@
 NAME = libasm.a
 
 SRCS =	ft_strlen.s \
+		ft_strcmp.s \
 		ft_strcpy.s
+	
 CC = nasm -felf64
 
 OBJS = ${SRCS:.s=.o}
