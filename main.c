@@ -4,23 +4,32 @@
 
 int main(int argc, char**argv)
 {
-    int i = argc;
-    i++;
-    char *caca;
-    char buf[16] = "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0";
-   printf("Longueur de la chaine \"%s\" est : %zu\n", argv[1], ft_strlen(argv[1]));
-    char dst[ft_strlen(argv[1])];
+    const char *str;
+    const char *strdup[2500];
+
+    if (argc == 1)
+    {
+        ft_write(1, "Please insert one arguments", 29);
+        exit(-1);
+    }
     int fd = open("test.txt", O_RDWR);
-    ft_strcpy(dst, argv[1]);
-    printf("DST = %s\n", dst);
-    if (!ft_strcmp(dst, "coucou"))
-        printf("La chaine est identique à coucou.\n");
-    else
-        printf("La chaine n'est pas identique à coucou :/\n");
-    printf("\nRetour write : %d | retour errno %d\n", ft_write(1, "pute", 4), errno);
-    ft_read(fd, buf, 16);
-    printf("\nRead: %s\n", buf);
-    caca = ft_strdup("grosse");
-    printf("Strdup : %s %d\n", caca, ft_strlen(caca));
-    return (0);
-}
+    int fdwrite = open("write.txt", O_RDWR);
+
+    str = ft_strdup(argv[1]);
+    printf("--------- Ft_strlen -------\n");
+    printf("Your sentence have %d character\n", ft_strlen(str));
+    printf("---------------------------\n");
+    printf("--------- Ft_write --------\n");
+    ft_write(fdwrite, str, ft_strlen(str));
+    printf("Your sentence is now in write.txt file\n");
+    ft_write(-1, strdup, 0);
+    printf("Errno error with random fd : %d\n", errno);
+    printf("-------- Ft_read ----------\n");
+    ft_read(fd, strdup, 2500);
+    printf("Reading test.txt file\n");
+    printf("%s\n", strdup);
+    printf("The text contains %d character\n", ft_strlen(strdup));
+    ft_read(-1, strdup, 10);
+    printf("Errno error with random fd : %d\n", errno);
+    printf("-------------------------\n");
+}   

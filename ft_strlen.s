@@ -1,13 +1,14 @@
 global ft_strlen
 
 ft_strlen:
-    xor rax, 0
+    mov rcx, 0
     jmp while
 
 while:
-    cmp byte [rdi + rax], 0
+    cmp byte [rdi + rcx], 0
     je exit
-    inc rax
+    inc rcx
     jmp while
 exit:
+    mov rax, rcx
     ret
