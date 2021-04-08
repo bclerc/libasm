@@ -12,7 +12,7 @@ loop:
     cmp byte [rsi + rcx], al
     jnz return
     inc rcx
-    jmp loop
+    jmp loop 
 
 return:
     movzx rax, byte [rdi + rcx]

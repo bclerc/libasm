@@ -19,7 +19,20 @@ int main(int argc, char**argv)
     printf("--------- Ft_strlen -------\n");
     printf("Your sentence have %d character\n", ft_strlen(str));
     printf("---------------------------\n");
-    printf("--------- Ft_write --------\n");
+    printf("--------- Ft_strcmp -----------\n");
+    if (!ft_strcmp(argv[1], "Bonjour"))
+        printf("Your sentence matches with Bonjour\n");
+    else
+        printf("No match between your sentence and Bonjour\n");
+    if (!ft_strcmp(argv[1], "couCOU"))
+        printf("Your sentence matches with couCOU\n");
+    else
+        printf("No match between your sentence and couCOU\n");
+    if (!ft_strcmp(argv[1], "une phrase plus longue"))
+        printf("Your sentence matches with une phrase plus longue\n");
+    else
+        printf("No match between your sentence and une phrase plus longue\n");
+    printf("--------- Ft_write  --------\n");
     ft_write(fdwrite, str, ft_strlen(str));
     printf("Your sentence is now in write.txt file\n");
     ft_write(-1, strdup, 0);
